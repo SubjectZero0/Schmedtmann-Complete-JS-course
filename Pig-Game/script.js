@@ -7,6 +7,7 @@ let activePlayer = document.querySelector('.player--active'); // The player whos
 const playerTurn = document.querySelectorAll('.player'); //array of the two players player1 = 0, player2 = 1
 const currentScore = document.querySelectorAll('.current-score'); //same as above
 const overallScore = document.querySelectorAll('.score'); //same as above
+const GAMEOVERSCORE = 50;
 //-----------------------------------------------------------
 const rollDiceBtn = document.querySelector('.btn--roll'); //roll dice button
 const holdBtn = document.querySelector('.btn--hold'); // Hold button. Saves Points
@@ -74,16 +75,9 @@ const rollDice = function (player) {
 };
 //-----------------------------------------------------------
 
-function disableButtons() {
-  //Function to disable all buttons except new game.
-  rollDiceBtn.disabled = true;
-  holdBtn.disabled = true;
-}
-function enableButtons() {
-  //function to enable the disabled buttons.
-  rollDiceBtn.disabled = false;
-  holdBtn.disabled = false;
-  false;
+function toggleButtons() {
+  rollDiceBtn.disabled = rollDiceBtn.disabled ? false : true;
+  holdBtn.disabled = holdBtn.disabled ? false : true;
 }
 //-----------------------------------------------------------
 
@@ -93,11 +87,11 @@ function checkWinner() {
     Additionally, disables all buttons except new game.
     Game ends at 50 points currently.
   */
-  if (Number(overallScore[0].textContent) >= 50) {
-    disableButtons();
+  if (Number(overallScore[0].textContent) >= GAMEOVERSCORE) {
+    toggleButtons();
     alert(`Player 1 Wins!!!`);
-  } else if (Number(overallScore[1].textContent) >= 50) {
-    disableButtons();
+  } else if (Number(overallScore[1].textContent) >= GAMEOVERSCORE) {
+    toggleButtons();
     alert(`Player 2 Wins!!!`);
   }
 }
@@ -133,7 +127,7 @@ holdBtn.addEventListener('click', function () {
   Initialize all values and enable all buttons.
 */
 newGameBtn.addEventListener('click', function () {
-  enableButtons();
+  toggleButtons();
   currentScore.forEach(element => {
     element.textContent = '0';
   });
