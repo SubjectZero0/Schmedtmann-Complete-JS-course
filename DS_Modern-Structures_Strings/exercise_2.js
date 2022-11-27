@@ -1,45 +1,45 @@
 "use strict";
 let scorers = {};
 const game = {
-  team1: "Bayern Munich",
-  team2: "Borrussia Dortmund",
-  players: [
-    [
-      "Neuer",
-      "Pavard",
-      "Martinez",
-      "Alaba",
-      "Davies",
-      "Kimmich",
-      "Goretzka",
-      "Coman",
-      "Muller",
-      "Gnarby",
-      "Lewandowski",
+    team1: "Bayern Munich",
+    team2: "Borrussia Dortmund",
+    players: [
+        [
+            "Neuer",
+            "Pavard",
+            "Martinez",
+            "Alaba",
+            "Davies",
+            "Kimmich",
+            "Goretzka",
+            "Coman",
+            "Muller",
+            "Gnarby",
+            "Lewandowski",
+        ],
+        [
+            "Burki",
+            "Schulz",
+            "Hummels",
+            "Akanji",
+            "Hakimi",
+            "Weigl",
+            "Witsel",
+            "Hazard",
+            "Brandt",
+            "Sancho",
+            "Gotze",
+        ],
     ],
-    [
-      "Burki",
-      "Schulz",
-      "Hummels",
-      "Akanji",
-      "Hakimi",
-      "Weigl",
-      "Witsel",
-      "Hazard",
-      "Brandt",
-      "Sancho",
-      "Gotze",
-    ],
-  ],
-  score: "4:0",
-  scored: ["Lewandowski", "Gnarby", "Lewandowski", "Hummels"],
-  date: "Nov 9th, 2037",
-  odds: {
-    team1: 1.33,
-    x: 3.25,
-    team2: 6.5,
-  },
-  scorers,
+    score: "4:0",
+    scored: ["Lewandowski", "Gnarby", "Lewandowski", "Hummels"],
+    date: "Nov 9th, 2037",
+    odds: {
+        team1: 1.33,
+        x: 3.25,
+        team2: 6.5,
+    },
+    scorers,
 };
 /*
 Let's continue with our football betting app!
@@ -65,13 +65,13 @@ GOOD LUCK 😀
 //==========1==========//
 
 for (const [index, player] of game.scored.entries()) {
-  console.log(`Goal ${index + 1}: ${player}`);
+    console.log(`Goal ${index + 1}: ${player}`);
 }
 
 //==========2==========//
 let sum = 0;
 for (const value of Object.values(game.odds)) {
-  sum += value;
+    sum += value;
 }
 const avgOdds = sum / Object.values(game.odds).length;
 console.log(avgOdds);
@@ -79,18 +79,18 @@ console.log(avgOdds);
 //==========3==========//
 
 for (const [key, value] of Object.entries(game.odds)) {
-  console.log(
-    "Odds of " +
-      `${game?.[key] ? "victory " : "draw"}` +
-      `${game?.[key] ?? ""}` +
-      " : " +
-      `${value}`
-  );
+    console.log(
+        "Odds of " +
+        `${game?.[key] ? "victory " : "draw"}` +
+        `${game?.[key] ?? ""}` +
+        " : " +
+        `${value}`
+    );
 }
 
 //==========4==========//
 
 for (const scorer of game.scored) {
-  scorers[scorer] = game.scored.filter((player) => player === scorer).length;
+    scorers[scorer] = game.scored.filter((player) => player === scorer).length;
 }
 console.log(scorers);
